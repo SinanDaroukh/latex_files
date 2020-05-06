@@ -1,0 +1,157 @@
+\documentclass[a4paper, 10pt]{article}
+
+\usepackage{makeidx}
+\usepackage{formular}
+\usepackage{listings}
+\usepackage[utf8]{inputenc}
+\usepackage[dvipsnames]{xcolor}
+
+\usepackage{mdframed}
+\usepackage{multicol}
+\usepackage{hyperref}
+\usepackage{geometry}
+\usepackage{mdframed}
+\usepackage{listings}
+
+\geometry{hmargin=2.5cm, lmargin=3cm, rmargin=2cm}
+
+\title{Notes and Logbook}
+\author{Sinan DAROUKH}
+\date{4th May 2019}
+
+\begin{document}
+
+\begin{titlepage}
+\maketitle
+\end{titlepage}
+
+\tableofcontents
+\newpage
+
+\section{WinCC OA \&  The JCOP Framework ?}
+\subsection{What is WINCC-OA ?}
+WinCC-OA is the Supervisory Control And Data Acquisition (aka SCADA) system chosen by JCOP.
+WinCC-OA aims is mainly to control and acquire data from the sensors from reals controls on experiments.
+PVSS was a SCADA system, made by ETM. Siemens now owns ETM and rebranded PVSS as WinCC-OA, but it's still the same tool.
+It's a tool for building SCADA applications
+
+\subsection{What is JCOP ?}
+JCOP stands for Joint COntrols Project which is a collaboration between the LHC experiments, the PH Departement and EN-ICE, the Controls Group in the Engineering Departement. JCOP aims to reduce the overall manpower cost required to produce and run the experiment control systems.
+
+\subsection{What is JCOP Framework ?}
+The JCOP Framework provides all the components required for WinCC-OA tool. Basically, it's a layer of software components.
+
+\subsection{What is FSM ?}
+FSM stands for Final State Machine, it's abstract representation of your experiment.
+
+
+\subsection{Exercice \#1}
+I have been trying http access into PMON with devwinccweb02:4999 on the lbts machine, it works fine.
+However I do not understand how the layout thing work so I better ask Luis.
+
+\subsection{Exercice \#2}
+I have done the exercice 2, slide 127 is useful to understand the architecture of DataPoint (DP)
+Note to self : Make a scheme about DPT, DP and DPE
+All the process to create a DataPoint Type, instanciate a DataPoint is in here.
+
+\subsection{Exercice \#3}
+Original value from the PARA editor :\_original..\_value
+PARA is very useful to debug and initialize :\_original..\_value
+Learn about callback function, how to initialize components, also how to generate script using the wizard.
+
+\subsection{Exercice \#4}
+
+Slide 165 : A note on dynamic arrays
+dyn\_int, dyn\_errClass, dyn\_float are just dynamic arrays of int, errClass, floats, etc \dots 
+Length of the dynamic array can be check using dynlen() function.
+errClass is a class dealing with special WinCC err.
+
+Slide 166 : anytype/mixed types
+anytype type enables developers to write functions that accept parameters or arbitrary type (very simple generic programming). Once an anytype variable is written to, it starts to behave as if it was of a type of the literal/variable that was assigned to it.
+
+Pro-tips : Use const references, to avoid needless copying of variables in callback functions
+
+\subsection{Extending Exercise \#4}
+Interesting point of view of why we should not try to save space doing interface but caring about color blind people.
+
+Slide 187 : Basic DP access functions
+dpGet() - get the value of a datapoint config attribute once.
+dpConnect() - register a callback to be executed whenever a datapoint config attribut changes.
+dpSet()/dpSetWait() - set the value of a datapoint config attribute.
+
+Check also for dpQuery(), dpDelete(), etc\dots
+
+Slide 188 : Performance
+dpSetWait() - set around ~1000 datapoints in a single function call.
+dpGet() - request values of as many datapoints as possible (pratical) in a single function call.
+
+Executing them for a single datapoint, is one the biggest performance killers in WinCC OA ! Warning !
+
+Slide 194 : More Aesthitics (Aesthitics standards to check)
+
+Slide 197 : Do not add computations, e.g. comparing voltage levels in panel code instead put those functions in CONTROL libraries. UI should only do UI stuffs.
+
+Slide 203 : Rewiew - Storage of values
+There are 3 different “places” where we can storevalues.\\
+You need to distinguish:
+\begin{itemize}
+    \item A number in a data point element.\\
+DPs (and hence DPEs) are held in the Event Manager process’s memory space.
+    \item A number in a widget on a panel.\\
+Widgets are held in a User Interface Manager.
+    \item A CONTROL variable in a script behind a widget.
+\end{itemize}
+
+Remember to name every widget, else you won't be able to access them from other widgets panel.
+(Check Slide for conventionnal names 205)
+
+DP Name Syntax in Script (Slide 208 - Good one, very important)
+
+\section{WinCC OA \&  The JCOP Framework Course - Part 2}
+\subsection{Exercice \#5}
+Slide 10 : Concept of a reference panel which can be useful and time-saver.
+Draw it once, but instanciate it many times.
+
+To make a "normal" panel as a reference panel, we have edit the previous script we made and make them more generic with \$parameters.
+
+What happens if you change the reference panel and then re-open the parent panel ?
+Changes are applied to the parent panel.
+
+How could you change it again to require that the user must supply a system name (dist\_nn:) each time he makes a new panel instance?
+By using the same process as the \$parameters for the distro.
+
+\subsection{Properties}
+Performance penalty
+Defined in the ScopeLib of each panels.
+Cleaner way to pass parameters to the reference panel.
+
+%\section{Alternative way to start UIs using the WinCC OA http built-in functionality}
+
+%\section{Data Visualization with fwWebViewPLus and highcharts.js}
+
+\newpage
+
+\section{Logbook}
+\subsection*{Monday 4th May}
+Starting work at 11.00 with meeting with Luis.
+Reading documentation about WinCC-OA, trying to set up. Sending emails.
+Ending around 17.30
+
+\subsection*{Tuesday 5th May}
+Starting work at 9.30
+Meeting with Luis at 11.00 
+Finalizing setup, starting tutorials from the documentation. Helping Loann ;)
+Starting Exercice 1 with Loann, but troubles to make it work... :'(
+Ending around 17.30
+
+\subsection*{Wednesday 6th May}
+Starting work at 7.50
+Exercice 2 Done.
+Exercice 3 Done.
+Exercice 4 Done.
+Slides 1.pdf Done ! Yay ! 214 slides completed.
+Exceptional Pause at 12.00 to 14.00 for phone call.
+Started Slides 2.pdf
+Ending at 17.10
+
+\end{document}

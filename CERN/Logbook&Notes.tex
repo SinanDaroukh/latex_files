@@ -72,12 +72,12 @@ anytype type enables developers to write functions that accept parameters or arb
 Pro-tips : Use const references, to avoid needless copying of variables in callback functions
 
 \subsection{Extending Exercise \#4}
-Interesting point of view of why we should not try to save space doing interface but caring about color blind people.
 
+Interesting point of view of why we should not try to save space doing interface but caring about color blind people.
 Slide 187 : Basic DP access functions
 dpGet() - get the value of a datapoint config attribute once.
 dpConnect() - register a callback to be executed whenever a datapoint config attribut changes.
-dpSet()/dpSetWait() - set the value of a datapoint config attribute.
+dpSet()/dpSetWait() - set the value of a datapoint config attribute.\\
 
 Check also for dpQuery(), dpDelete(), etc\dots
 
@@ -125,6 +125,64 @@ Performance penalty
 Defined in the ScopeLib of each panels.
 Cleaner way to pass parameters to the reference panel.
 
+\section{Exercice \#5 - Scripts and CTRL Manager}
+Scripts are contained in the Script folder, they run in the background, we need to associate them a CTRL manager to run.
+If we edit a script, which already associated with a CTRL manager, we need to restart the CTRL manager.
+
+Slides 57-61 ARE IMPORTANT
+
+\section{Exercice \#6 - Debugging Tips}
+\begin{itemize}
+    \item Look the logviewer
+    \item Check Manager Status
+    \item Use PARA
+    \item Use DebugTN() and DebugFTN()
+\end{itemize}
+DebugTN("") : DebugTN(“Entering with pressure=” + pressure);\\
+DebugFTN(""): DebugFTN(“myDebugFlag","Custom debug myDebugFlag is activated.“);\\
+DebugFTN("") need setting up debugging flag to the control manager. -dbg myDebugFlag
+Usefuls variables for debugging :\\
+\_\_LINE\_\_ : Give the LINE in the code where is generate the debug message\\
+\_\_FUNCTION\_\_ : Give the name of the function which called the Debug function\\
+\_\_FILE\_\_ : Give the file that contained the function call.
+
+Got issues running the CTRL Script and associate it to the Manager.
+Gonna try with own prgm and not solution tomorrow.
+
+\subsection{WinCC OA Exceptions}
+Error Class : errClass
+Can use : try { }, catch { }, finally { } and throw(err)
+Online help : Control > Introduction CONTROL > Error handling
+
+\subsection{Alarms / Alerts}
+Called in PVSS : Alerts. WinCC name is Alarms.
+2 parts : Alert handling, how the alert should be raised and Alert Class, attributes which generally apply to more than one alert.
+
+To add an alert, go to PARA, right on the DPT you'd like to add a alert, then click on "Insert Config"
+
+AES - Alarm Screen : SysMgm - Diagnostics - Alarmscreen
+Do not configure columns in AES Settings.
+
+\subsection{Others configs}
+\begin{itemize}
+    \item WinCC OA value range config
+Specifies the “valid” range for its specific dpe.
+If “original value” goes out of range, it is flagged “invalid”. 
+    \item Default value
+Specifies an always “valid” value for its specific dpe
+If “original value” goes out of range, the “online value” takes on this default value instead.
+    \item User range config
+Specifies the range of values that a user (holding a specific authorization) is permitted to
+write into this DPE. Useful for restricting manual data entry possibilities.
+    \item DP function config
+Defines the original value of a DPE in terms of the values of other DPEs, e.g.(DPE1+DPE2)/2
+Various statistical functions are available, e.g. take on the value of an input DP averaged over the last hour or last day. Executed in the Event Manager
+    \item Smoothing - Dangerous, as smoothing include throwing data
+    \item Authorization config
+    \item Etc...
+\end{itemize}
+
+
 %\section{Alternative way to start UIs using the WinCC OA http built-in functionality}
 
 %\section{Data Visualization with fwWebViewPLus and highcharts.js}
@@ -165,6 +223,9 @@ Cleaner way to pass parameters to the reference panel.
 \subsection*{Thursday 7th May}
 \begin{itemize}
     \item Starting work at 9.00
+    \item Issues with home WiFi...
+    \item Exercice 5-6. Some difficulties with the CTRL system.
+    \item Pause at 13.00
 \end{itemize}
 
 

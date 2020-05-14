@@ -217,6 +217,27 @@ WCCOActrl    (3), 2020.05.14 11:20:00.462, PARAM,SEVERE,    140, The Private Key
 
 \subsection*{Message to Luis :}
 
+Hi Luis,
+
+So I have been experimenting with the Http Server, I have been through a lot of issues.
+First I had to copy a file from the WinCC installation folder, which was quite easy to do, even though I spend a bit amount of time to locate it.
+The WinCC-OA installation is located here : /opt/WinCC\_OA and the config.http is here : /opt/WinCC\_OA/3.16/config/config.http
+So I have copied this file, then I create a new CTRL Manager to run this script from the WinCC Script lib : rs_http.ctl
+The manager had troubles to start and initialize properly, I took me a while to manage how to resolve the problem.
+The logviewer told me that the port 80 is already in use and the port 443 could not be opened.
+So I had two solutions, ask for root access to launch the WINCC-OA as it could opened the port 443 or change the port number, which I did.
+Now I have no longer any problem for the HttpServer to listen on the port 80 and 443.
+However I can't access them through the web browser, the https url give me a Forbidden Access, and the http url keep loading.
+
+I have also been looking to other kind of documentation online and I found a YouTube video about Web Server in WinCC. 
+It use another component, but it's linked to the HttpServer (See Online Help > Add-ons > ULC UX).
+I was wondering if you know this one, or if it's more appropriate to what you expect.
+
+I am also wondering if you could provide me a network map of the environment of my machine. Maybe, it'll help me understand how the thing work.
+Also, I have tried to generate a self-signed certificate but I have issues with it, the privkey is not recognize properly.
+
+I'll keep investigating !
+
 \newpage
 
 \section{Logbook}

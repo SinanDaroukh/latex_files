@@ -125,13 +125,13 @@ Performance penalty
 Defined in the ScopeLib of each panels.
 Cleaner way to pass parameters to the reference panel.
 
-\section{Exercice \#5 - Scripts and CTRL Manager}
+\subsection{Exercice \#5 - Scripts and CTRL Manager}
 Scripts are contained in the Script folder, they run in the background, we need to associate them a CTRL manager to run.
 If we edit a script, which already associated with a CTRL manager, we need to restart the CTRL manager.
 
 Slides 57-61 ARE IMPORTANT
 
-\section{Exercice \#6 - Debugging Tips}
+\subsection{Exercice \#6 - Debugging Tips}
 \begin{itemize}
     \item Look the logviewer
     \item Check Manager Status
@@ -182,10 +182,38 @@ Various statistical functions are available, e.g. take on the value of an input 
     \item Etc...
 \end{itemize}
 
+\subsection{Where does WinCC OA keep its data ?}
+Most of the data is part of a RAIMA database. Or you can also archive some datas with Oracle.
+Slide 153 : Show how to enable Oracle archiving
+Slides 179-end aboout debugging
 
-%\section{Alternative way to start UIs using the WinCC OA http built-in functionality}
+\subsection*{Setup}
+ssh devwinccweb02
 
-%\section{Data Visualization with fwWebViewPLus and highcharts.js}
+\subsection*{JCOP FW}
+Slides 34 - 48
+Use naming conventions from the experiment you are part of
+
+\newpage
+\section*{HTTP Server}
+\subsection*{Requirements for the HTTP Server}
+The WinCC-OA installation is located here : /opt/WinCC\_OA and the config.http is here : /opt/WinCC\_OA/3.16/config/config.http
+Copy the file config.http from the directory <wincc\_oa\_path>/config to <proj\_path>/config.
+cp /opt/WinCC\_OA/3.16/config/config.http /localdisk/wincc/Sinan/config
+The IP of devwinccweb02 is 10.128.220.212
+
+
+WCCOActrl    (3), 2020.05.13 12:04:27.048, CTRL, SEVERE,      5/ctrl, Location of the following log entry: rs\_http.ctl    Library: /opt/WinCC\_OA/3.16/scripts/libs/http.ctl
+Line: 2551
+WCCOActrl    (3), 2020.05.13 12:04:27.048, SYS,  SEVERE,      1/http, The Port 443 could not be opened.
+WCCOActrl3:["ERROR: HTTP-server can't start. Reasons:
+WCCOActrl3: - Portnumber 80 is allready in use
+WCCOActrl3: - SSL/https: - initialisation problem (port: 443)
+WCCOActrl3: - No license available"]
+---
+WCCOActrl    (3), 2020.05.14 11:20:00.463, CTRL, SEVERE,      5/ctrl, Location of the following log entry: rs\_http.ctl    Library: /localdisk/wincc/Sinan/scripts/libs/http.ctl
+    Line: 2551
+WCCOActrl    (3), 2020.05.14 11:20:00.462, PARAM,SEVERE,    140, The Private Key File /localdisk/wincc/Sinan/config/privkey.pem can not be used: key values mismatch
 
 \newpage
 
@@ -225,8 +253,35 @@ Various statistical functions are available, e.g. take on the value of an input 
     \item Starting work at 9.00
     \item Issues with home WiFi...
     \item Exercice 5-6. Some difficulties with the CTRL system.
-    \item Pause at 13.00
+    \item Pause at 13.00 - 14.00
+    \item Slides 2.pdf finished ! Yay ! 193 slides completed.
+    \item Started slide 3.pdf
+    \item Ending at 18.18
 \end{itemize}
 
+\subsection*{Friday 8th May - Bank Holiday}
+
+\subsection*{Monday 11th May}
+\begin{itemize}
+    \item Starting work at 8.00
+    \item Meeting at 10.00 - 11.30
+    \item Going to the end of slides
+    \item End of work at 17.30
+\end{itemize}
+
+\subsection*{Tuesday 12th May}
+\begin{itemize}
+    \item Starting work at 10.30
+    \item Doing and prep for the oral of Wednesday
+    \item Starting reading the documentation about Http Server
+    \item Ending work at 17.30
+\end{itemize}
+
+\subsection*{Wednesday 13th May}
+\begin{itemize}
+    \item Starting work at 09.30
+    \item documentation
+    \item Ending work at 17.30
+\end{itemize}
 
 \end{document}

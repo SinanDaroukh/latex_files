@@ -195,8 +195,8 @@ Slides 34 - 48
 Use naming conventions from the experiment you are part of
 
 \newpage
-\section*{HTTP Server}
-\subsection*{Requirements for the HTTP Server}
+\section{HTTP Server}
+\subsection{Requirements for the HTTP Server}
 The WinCC-OA installation is located here : /opt/WinCC\_OA and the config.http is here : /opt/WinCC\_OA/3.16/config/config.http
 Copy the file config.http from the directory <wincc\_oa\_path>/config to <proj\_path>/config.
 cp /opt/WinCC\_OA/3.16/config/config.http /localdisk/wincc/Sinan/config
@@ -222,8 +222,8 @@ Hi Luis,
 So I have been experimenting with the Http Server, I have been through a lot of issues.
 First I had to copy a file from the WinCC installation folder, which was quite easy to do, even though I spend a bit amount of time to locate it.
 The WinCC-OA installation is located here : /opt/WinCC\_OA and the config.http is here : /opt/WinCC\_OA/3.16/config/config.http
-So I have copied this file, then I create a new CTRL Manager to run this script from the WinCC Script lib : rs_http.ctl
-The manager had troubles to start and initialize properly, I took me a while to manage how to resolve the problem.
+So I have copied this file, then I create a new CTRL Manager to run this script from the WinCC Script lib : rs\_http.ctl
+The manager had troubles to start and initialize properly, it took me a while to manage how to resolve the problem.
 The logviewer told me that the port 80 is already in use and the port 443 could not be opened.
 So I had two solutions, ask for root access to launch the WINCC-OA as it could opened the port 443 or change the port number, which I did.
 Now I have no longer any problem for the HttpServer to listen on the port 80 and 443.
@@ -238,8 +238,27 @@ Also, I have tried to generate a self-signed certificate but I have issues with 
 
 I'll keep investigating !
 
-\newpage
+\subsection{ULC UX}
+The ULC UX is a User Interface client for WinCC OA based on the HTML5 technology. It is used as a new alternative to the WinCC OA UI (native UI on Windows and Linux).
 
+The ULC UX can use already engineered panels without any special adaptions.
+
+The ULC UX can be used with:
+\begin{itemize}
+    \item Dynamic panels that are using the WinCC OA Control scripting language, as well as
+    \item Custom EWOs
+\end{itemize}
+
+The ULC UX combines following benefits in a single UI solution:
+\begin{itemize}
+    \item No installation is required on client side
+    \item Communication is secured by using SSL encryption
+    \item User management can be performed by using SSO
+    \item Usage of WinCC OA panels without changes to the existing control scripts
+\end{itemize}
+
+\newpage
+\footnotesize
 \section{Logbook}
 \subsection*{Monday 4th May}
 \begin{itemize}
@@ -303,8 +322,80 @@ I'll keep investigating !
 \subsection*{Wednesday 13th May}
 \begin{itemize}
     \item Starting work at 09.30
-    \item documentation
+    \item Reading documentation, searching for stuffs
     \item Ending work at 17.30
 \end{itemize}
 
+\subsection*{Thursday 14th May}
+\begin{itemize}
+    \item Starting work at 09.30
+    \item Stuck, reading for stuffs, and writting mails to Luis
+    \item Ending work at 17.30
+\end{itemize}
+
+\subsection*{Friday 15th May}
+\begin{itemize}
+    \item Starting work at 09.30
+    \item Meeting with Luis searching about other stuffs WebServer/HttpServer
+    \item Things to do : Look at all the documentation about WebServer, Navigations, Permissions and access (restrictions) and configs files (configs levels).
+    \item Ending work at 14.30
+\end{itemize}
+
+\subsection*{Monday 18th May}
+\begin{itemize}
+    \item Starting work at 15.00
+    \item Sick as fuck
+    \item Ending work at 17.00
+\end{itemize}
+
+\subsection*{Tuesday 19th May}
+\begin{itemize}
+    \item Starting work at 10.00
+    \item Finished the documentation.
+    \item 
+    \item Ending work at 17.00
+\end{itemize}
+
+\subsection{Iteration from Wednesday 15th to the 20th}
+
+Configs files notes : 
+config.level is for managers configurations, and basically, loading libs through this file.
+config.redu is for redundancy, that we are not seeking for, at the moment
+config.http is a premade file from the WinCC-OA folder
+config.webclient is an additional file for configuration Desktop and Mobile UI add-ons\dots Not what we are looking for
+
+I have tested multiple stuffs on those. Nothing really can simply the actual config (root) file.
+I guess there's another option not yet tested which is the own conf file, idk if we can use more than once.
+
+For the navigation fluidify and simply, I have been testing stuffs and reading about the differences between Modules, Embedded Modules , Child and Root Panel.
+To navigate properly, I think I should take a look at the Topologies panels components...
+Embedded modules through one root module, may be the best option.
+
+\subsection{Iteration from Wednesday 20th to the 27th}
+TO DO : - User permissions, one can connect to view, another can connect to administrate < DONE >
+        - Play with the alarm Screen, make a shortcut to it
+        - (FSM) Implement one, how it goes
+
+DONE :  - Login panel has been implemented (worked on both ULC and Regular WinCC)
+        - Can access on user admnistration panel through it : Module > SysMgm > Permissions > User Admnistration, which on root access list all users and permissions
+        - Groups > Admnistrate > Permissions : You can change the group permissions but also, create new groups with new permissions
+        - Permissions are logged in an Authorization Bits system. The first five bits are already define, they are predefined and un-changeable, but you can change the description if you want and texts of it : 
+            - 1 : Visualisation: Visualize only
+            - 2 : Normal operator authorization: permits the opening of child panels.
+            - 3 : Advanced operator authorization: permits execution of commands, explicit setting of replacement values, input of correction values as well as changes to all value range types.
+            - 4 : Administration: permits the use of the PARA.
+            - 5 : Acknowledgement: permits acknowledgment of alerts.
+            - 32 : Allows SSO for one work station
+        - Can also access on login statistics panel to see whose connected : Module > Login Statistics
+        - We can manage the Components access thanks to the boolean getUserPermission() function : CONTROL > Control functions > G > getUserPermission()
+        - We can check on the Main Panel, by Login via Guest or via Root
+        - Auto login done, with inactivity (Glitch with inactivity, security one) (UI number changed some time)
+
+        - Alarm Panel -> 
+
+        - FSM haven't the time
+
+\subsection{Small Iteration from 27th to the 29th}
+
+\normalsize
 \end{document}

@@ -71,7 +71,7 @@ anytype type enables developers to write functions that accept parameters or arb
 
 Pro-tips : Use const references, to avoid needless copying of variables in callback functions
 
-\subsection{Extending Exercise \#4}
+\subsection{Extending Exercise \#4}\\
 
 Interesting point of view of why we should not try to save space doing interface but caring about color blind people.
 Slide 187 : Basic DP access functions
@@ -218,11 +218,10 @@ WCCOActrl    (3), 2020.05.14 11:20:00.462, PARAM,SEVERE,    140, The Private Key
 \subsection*{Message to Luis :}
 
 Hi Luis,
-
 So I have been experimenting with the Http Server, I have been through a lot of issues.
 First I had to copy a file from the WinCC installation folder, which was quite easy to do, even though I spend a bit amount of time to locate it.
 The WinCC-OA installation is located here : /opt/WinCC\_OA and the config.http is here : /opt/WinCC\_OA/3.16/config/config.http
-So I have copied this file, then I create a new CTRL Manager to run this script from the WinCC Script lib : rs_http.ctl
+So I have copied this file, then I create a new CTRL Manager to run this script from the WinCC Script lib : rs\_http.ctl
 The manager had troubles to start and initialize properly, I took me a while to manage how to resolve the problem.
 The logviewer told me that the port 80 is already in use and the port 443 could not be opened.
 So I had two solutions, ask for root access to launch the WINCC-OA as it could opened the port 443 or change the port number, which I did.
@@ -307,4 +306,9 @@ I'll keep investigating !
     \item Ending work at 17.30
 \end{itemize}
 
+\subsection{Iteration from Wednesday 27th to Tuesday 2nd}
+The aim of the iteration was to :
+    - Adding and testing the FSM, on the Web app, it actually works but...
+    - Create Shortcut for opening differents kinds of panels, I had issues with the DEN Panel...
+    - Didn't check on the Alarm Screen and the Users Permissions, as I had issues with the DNS part of the tuturials.
 \end{document}

@@ -7,3 +7,104 @@
 \title{Notes and Logbook}
 \author{Sinan DAROUKH}
 \date{4th May 2019}
+
+
+\begin{document}
+
+\begin{titlepage}
+\maketitle
+\end{titlepage}
+
+\tableofcontents
+\newpage
+
+\section{Internship Main Goal}
+\section{Avancements des travaux}
+\section{Etapes réalisées - Logbook}
+\footnotesize
+\subsection*{Iteration from the 4th May to the 15th May - Two first weeks}
+\begin{itemize}
+    \item Reading documentations about WinCC-OA.
+    \item Setting up the main project.
+    \item Reading/Writting emails to the ISIMA supervisor (Mr HILL) and the CERN one (Mr Luis Granado Cardoso).
+    \item Helping and exchanging with Loann, who is working on the same technology as me.
+    \item Going through the tutorial slides.
+    \item Experimenting through Exercice 1,2,3 and 4.
+    \item Facing some difficulties with the CTRL system.
+    \item Reading documentation about HttpServer
+    \item Watching videos about WinCC-OA on KAASM's youtube channel.
+    \item 
+\end{itemize}
+
+
+
+\subsection*{Friday 15th May}
+\begin{itemize}
+    \item Starting work at 09.30
+    \item Meeting with Luis searching about other stuffs WebServer/HttpServer
+    \item Things to do : Look at all the documentation about WebServer, Navigations, Permissions and access (restrictions) and configs files (configs levels).
+    \item Ending work at 14.30
+\end{itemize}
+
+\subsection*{Monday 18th May}
+\begin{itemize}
+    \item Starting work at 15.00
+    \item Sick as fuck
+    \item Ending work at 17.00
+\end{itemize}
+
+\subsection*{Tuesday 19th May}
+\begin{itemize}
+    \item Starting work at 10.00
+    \item Finished the documentation.
+    \item 
+    \item Ending work at 17.00
+\end{itemize}
+
+\subsection{Iteration from Wednesday 15th to the 20th}
+
+Configs files notes : 
+config.level is for managers configurations, and basically, loading libs through this file.
+config.redu is for redundancy, that we are not seeking for, at the moment
+config.http is a premade file from the WinCC-OA folder
+config.webclient is an additional file for configuration Desktop and Mobile UI add-ons\dots Not what we are looking for
+
+I have tested multiple stuffs on those. Nothing really can simply the actual config (root) file.
+I guess there's another option not yet tested which is the own conf file, idk if we can use more than once.
+
+For the navigation fluidify and simply, I have been testing stuffs and reading about the differences between Modules, Embedded Modules , Child and Root Panel.
+To navigate properly, I think I should take a look at the Topologies panels components...
+Embedded modules through one root module, may be the best option.
+
+\subsection{Iteration from Wednesday 20th to the 27th}
+TO DO : - User permissions, one can connect to view, another can connect to administrate < DONE >
+        - Play with the alarm Screen, make a shortcut to it
+        - (FSM) Implement one, how it goes
+
+DONE :  - Login panel has been implemented (worked on both ULC and Regular WinCC)
+        - Can access on user admnistration panel through it : Module > SysMgm > Permissions > User Admnistration, which on root access list all users and permissions
+        - Groups > Admnistrate > Permissions : You can change the group permissions but also, create new groups with new permissions
+        - Permissions are logged in an Authorization Bits system. The first five bits are already define, they are predefined and un-changeable, but you can change the description if you want and texts of it : 
+            - 1 : Visualisation: Visualize only
+            - 2 : Normal operator authorization: permits the opening of child panels.
+            - 3 : Advanced operator authorization: permits execution of commands, explicit setting of replacement values, input of correction values as well as changes to all value range types.
+            - 4 : Administration: permits the use of the PARA.
+            - 5 : Acknowledgement: permits acknowledgment of alerts.
+            - 32 : Allows SSO for one work station
+        - Can also access on login statistics panel to see whose connected : Module > Login Statistics
+        - We can manage the Components access thanks to the boolean getUserPermission() function : CONTROL > Control functions > G > getUserPermission()
+        - We can check on the Main Panel, by Login via Guest or via Root
+        - Auto login done, with inactivity (Glitch with inactivity, security one) (UI number changed some time)
+
+        - Alarm Panel -> 
+
+        - FSM haven't the time
+
+\subsection{Iteration from Wednesday 27th to Tuesday 2nd}
+The aim of the iteration was to :
+    - Adding and testing the FSM, on the Web app, it actually works but...
+    - Create Shortcut for opening differents kinds of panels, I had issues with the DEN Panel...
+    - Didn't check on the Alarm Screen and the Users Permissions, as I had issues with the DNS part of the tuturials.
+\section{Diagrammes de Gantt Réel}
+
+\end{document}

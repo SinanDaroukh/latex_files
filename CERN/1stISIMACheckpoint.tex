@@ -46,34 +46,33 @@ The main goal of this iteration was to get more familiar with WinCC-OA and the J
 \subsection{Iteration from the Wednesday 15th of May to the Sunday 20th of May}
 \paragraph{Objectives of the iteration :}
 The aim of this iteration was to look at all the documentation about the WebServer components in WinCC-OA, how to navigate properly between panels, how to manage users access permissions and restrictions, and how to well organise configs files in a project.
-\paragraph{Tasks done \& notes :}
+\paragraph{Tasks done :}
 \begin{itemize}
     \item I was sick during a part of this iteration, so I did not work effictively on Monday
     \item Reading all the documentation
-    \item 
 \end{itemize}
 
-Configs files notes : 
-config.level is for managers configurations, and basically, loading libs through this file.
-config.redu is for redundancy, that we are not seeking for, at the moment
-config.http is a premade file from the WinCC-OA folder
-config.webclient is an additional file for configuration Desktop and Mobile UI add-ons\dots Not what we are looking for
-
+\paragraph{Notes :} 
+\begin{itemize}
+    \item config.level is for managers configurations, and basically, loading libs through this file.
+    \item config.redu is for redundancy, that we are not seeking for, at the moment
+    \item config.http is a premade file from the WinCC-OA folder
+    \item config.webclient is an additional file for configuration Desktop and Mobile UI add-ons\dots Not what we are looking for
+\end{itemize}
 I have tested multiple stuffs on those. Nothing really can simply the actual config (root) file.
 I guess there's another option not yet tested which is the own conf file, idk if we can use more than once.
-
 For the navigation fluidify and simply, I have been testing stuffs and reading about the differences between Modules, Embedded Modules , Child and Root Panel.
 To navigate properly, I think I should take a look at the Topologies panels components...
 Embedded modules through one root module, may be the best option.
 
 \subsection{Iteration from Wednesday 20th to the 27th}
-TO DO : 
+\paragraph{Objectives of the iteration :}
 \begin{itemize}
     \item User permissions, one can connect to view, another can connect to administrate
     \item Play with the alarm Screen, make a shortcut to it
     \item (FSM) Implement one, how it goes
 \end{itemize}
-DONE :  
+\paragraph{Tasks done :}
 \begin{itemize}
     \item Login panel has been implemented (worked on both ULC and Regular WinCC)
     \item Can access on user admnistration panel through it : Module > SysMgm > Permissions > User Admnistration, which on root access list all users and permissions

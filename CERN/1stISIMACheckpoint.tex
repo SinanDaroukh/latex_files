@@ -18,12 +18,28 @@
 \tableofcontents
 \newpage
 
-\section{Objectifs et mise en contexte du stage}
-\subsection{The CERN and the LHCb Departement}
+\section{Internship context}
+\subsection{The CERN}
+\paragraph{}
+The Frenchman Louis de Broglie, who was awarded the Nobel Prize in physics in 1929, was behind the creation of CERN. In 1949, he proposed the creation of a European scientific laboratory in order to breathe new life into scientific research following the Second World War. In 1952, with the support of UNESCO, the European Council, with the support of the United Nations Educational, Scientific and Cultural Organization (UNESCO), decided to set up a European scientific laboratory to breathe new life into scientific research after the Second World War.
+for Nuclear Research (CERN) is the result of an agreement between eleven European governments. The municipality of Meyrin, located near Geneva, was chosen to host this laboratory.
+In 1954, the first construction work on the site began and on 29
+In September the CERN Convention was signed by twelve European States. It was at this date when the research centre, then called the European Organisation for Nuclear Research, was officially established.
+\paragraph{}
+Today CERN is very well known thanks to its experiences and more particularly its particle accelerator. However, it should be noted that many accelerators have succeeded one another on the laboratory site. The first was the Synchro-Cyclotron a protons inaugurated in 1957. The accelerators being larger and larger, an agreement was made with France in 1965 to expand the site on French territory. Then in 1981 it was decided to build an accelerator in a tunnel with a circumference of 27 kilometers located 100 meters deep underground. This tunnel, which is housed in first the LEP (Large Electron Positron Collider). This one was replaced by the current LHC (Large Hadron Collider) in 2008. CERN now has 23 member countries and around 2,500 employees and more of 17,500 researchers who come to the Meyrin site to carry out experiments on the premises of the research centre. The budget of such an organisation amounts to more than 1 billion Swiss Francs per year. This funding is fully covered by the Member States.
+
+\subsection{The LHCb Departement}
+
+\section{Technologies}
 \subsection{What is WinCC-OA ?}
+\paragraph{}
+SIMATIC WinCC is a Supervisory Control And Data Acquisition (aka SCADA) and human-machine interface from Siemens. SCADA systems are used to monitor and control physical processes involved in industry and infrastructure on a large scale and over long distances. SIMATIC WinCC can be used in combination with Siemens controllers. WinCC is written for the Microsoft Windows operating system, but it could be use on Linux operating system. WinCC-OA aims is mainly to control and acquire data from the sensors from reals controls on experiments. You may have heard about PVSS. It was a SCADA system, made by ETM. Siemens now owns ETM and rebranded PVSS as WinCC-OA, but it's still the same tool. It's a tool for building SCADA applications. WinCC-OA is the SCADA system chosen by JCOP.
+
 \subsection{What is JCOP ?}
-\subsection{Main goals of the internship}
-\section{Avancements des travaux}
+\paragraph{}
+JCOP stands for Joint COntrols Project which is a collaboration between the LHC experiments, the PH Departement and EN-ICE, the Controls Group in the Engineering Departement. JCOP aims to reduce the overall manpower cost required to produce and run the experiment control systems.The JCOP Framework provides all the components required for WinCC-OA tool. Basically, it's a layer of software components and shared tools that might be useful for modelling LHC Experiment.
+
+\section{Main goals of the internship}
 \section{Logbook and tasks done}
 \footnotesize
 \subsection{Iteration from the Monday 4th of May to the Friday 15th of May}
@@ -39,33 +55,33 @@ The main goal of this iteration was to get more familiar with WinCC-OA and the J
     \item Experimenting through Exercice 1,2,3 and 4.
     \item Facing some difficulties with the CTRL system.
     \item Reading documentation about HttpServer
-    \item Watching videos about WinCC-OA on \href{https://www.youtube.com/user/ETM2011}{Siemens} and  \href{https://www.youtube.com/channel/UCGBnHd1-B-Zg9MDsjTk0-Sw}{KAASM}'s youtube channel. 
+    \item Watching videos about WinCC-OA on \href{https://www.youtube.com/user/ETM2011}{Siemens} and \href{https://www.youtube.com/channel/UCGBnHd1-B-Zg9MDsjTk0-Sw}{KAASM}'s youtube channel. 
     \item Doing daily meetings with Luis to track the progess.
 \end{itemize}
 
 \subsection{Iteration from the Wednesday 15th of May to the Sunday 20th of May}
 \paragraph{Objectives of the iteration :}
 The aim of this iteration was to look at all the documentation about the WebServer components in WinCC-OA, how to navigate properly between panels, how to manage users access permissions and restrictions, and how to well organise configs files in a project.
-\paragraph{Tasks done :}
+I was sick during a part of this iteration, so I did not work effictively on Monday
+\paragraph{Task done :}
 \begin{itemize}
-    \item I was sick during a part of this iteration, so I did not work effictively on Monday
     \item Reading all the documentation
 \end{itemize}
 
 \paragraph{Notes :} 
+I have been reading the documentation about the config files :
 \begin{itemize}
     \item config.level is for managers configurations, and basically, loading libs through this file.
     \item config.redu is for redundancy, that we are not seeking for, at the moment
     \item config.http is a premade file from the WinCC-OA folder
-    \item config.webclient is an additional file for configuration Desktop and Mobile UI add-ons\dots Not what we are looking for
+    \item config.webclient is an additional file for configuration Desktop and Mobile UI add-ons\dots (Not what we are looking for)
 \end{itemize}
-I have tested multiple stuffs on those. Nothing really can simply the actual config (root) file.
-I guess there's another option not yet tested which is the own conf file, idk if we can use more than once.
-For the navigation fluidify and simply, I have been testing stuffs and reading about the differences between Modules, Embedded Modules , Child and Root Panel.
-To navigate properly, I think I should take a look at the Topologies panels components...
-Embedded modules through one root module, may be the best option.
+I have tested multiple stuffs on those. Nothing really can simplify the actual config (root) file.
+I guess there's another option not yet tested which is the own conf file, idk if we can use more than once.\newline
+For the navigation fluidify and simplification issues, I have been testing stuffs and reading about the differences between Modules, Embedded Modules , Child and Root Panel.\newline
+To navigate properly, I think I should take a look at the Topologies panels components... The embedded modules through one root module, may be the best option.
 
-\subsection{Iteration from Wednesday 20th to the 27th}
+\subsection{Iteration from the Wednesday 20th May to the Wednesday 27th May}
 \paragraph{Objectives of the iteration :}
 \begin{itemize}
     \item User permissions, one can connect to view, another can connect to administrate
@@ -75,8 +91,8 @@ Embedded modules through one root module, may be the best option.
 \paragraph{Tasks done :}
 \begin{itemize}
     \item Login panel has been implemented (worked on both ULC and Regular WinCC)
-    \item Can access on user admnistration panel through it : Module > SysMgm > Permissions > User Admnistration, which on root access list all users and permissions
-    \item Groups > Admnistrate > Permissions : You can change the group permissions but also, create new groups with new permissions
+    \item Can access on user admnistration panel through it : Module \textgreater\ SysMgm \textgreater\ Permissions \textgreater\ User Admnistration, which on root access list all users and permissions
+    \item Groups \textgreater\ Admnistrate \textgreater\ Permissions : You can change the group permissions but also, create new groups with new permissions
     \item Permissions are logged in an Authorization Bits system. The first five bits are already define, they are predefined and un-changeable, but you can change the description if you want and texts of it : 
     \begin{itemize}
         \item 1 : Visualisation: Visualize only
@@ -94,7 +110,7 @@ Embedded modules through one root module, may be the best option.
     \item I also haven't the time to experiment on the FSM Things
 \end{itemize}
 
-\subsection{Iteration from Wednesday 27th to Tuesday 2nd}
+\subsection{Iteration from the Wednesday 27th May to the Tuesday 2nd June}
 The aim of the iteration was to :
 \begin{itemize}
     \item Adding and testing the FSM, on the Web app, it actually works but...

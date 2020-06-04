@@ -37,8 +37,6 @@ It's a tool for building SCADA applications
 
 \subsection{What is JCOP ?}
 JCOP stands for Joint COntrols Project which is a collaboration between the LHC experiments, the PH Departement and EN-ICE, the Controls Group in the Engineering Departement. JCOP aims to reduce the overall manpower cost required to produce and run the experiment control systems.
-
-\subsection{What is JCOP Framework ?}
 The JCOP Framework provides all the components required for WinCC-OA tool. Basically, it's a layer of software components.
 
 \subsection{What is FSM ?}
@@ -71,10 +69,8 @@ anytype type enables developers to write functions that accept parameters or arb
 
 Pro-tips : Use const references, to avoid needless copying of variables in callback functions
 
-\subsection{Extending Exercise \#4}\\
-
-Interesting point of view of why we should not try to save space doing interface but caring about color blind people.
-Slide 187 : Basic DP access functions
+\subsection{Extending Exercise \#4}
+Interesting point of view of why we should not try to save space doing interface but caring about color blind people. Slide 187 : Basic DP access functions
 dpGet() - get the value of a datapoint config attribute once.
 dpConnect() - register a callback to be executed whenever a datapoint config attribut changes.
 dpSet()/dpSetWait() - set the value of a datapoint config attribute.\\
@@ -325,12 +321,6 @@ The ULC UX combines following benefits in a single UI solution:
     \item Ending work at 17.30
 \end{itemize}
 
-\subsection{Iteration from Wednesday 27th to Tuesday 2nd}
-The aim of the iteration was to :
-    - Adding and testing the FSM, on the Web app, it actually works but...
-    - Create Shortcut for opening differents kinds of panels, I had issues with the DEN Panel...
-    - Didn't check on the Alarm Screen and the Users Permissions, as I had issues with the DNS part of the tuturials.
-
     \subsection*{Thursday 14th May}
 \begin{itemize}
     \item Starting work at 09.30
@@ -361,7 +351,7 @@ The aim of the iteration was to :
     \item Ending work at 17.00
 \end{itemize}
 
-\subsection{Iteration from Wednesday 15th to the 20th}
+\subsection*{Iteration from Wednesday 15th to the 20th}
 
 Configs files notes : 
 config.level is for managers configurations, and basically, loading libs through this file.
@@ -376,7 +366,7 @@ For the navigation fluidify and simply, I have been testing stuffs and reading a
 To navigate properly, I think I should take a look at the Topologies panels components...
 Embedded modules through one root module, may be the best option.
 
-\subsection{Iteration from Wednesday 20th to the 27th}
+\subsection*{Iteration from Wednesday 20th to the 27th}
 TO DO : - User permissions, one can connect to view, another can connect to administrate < DONE >
         - Play with the alarm Screen, make a shortcut to it
         - (FSM) Implement one, how it goes
@@ -400,7 +390,11 @@ DONE :  - Login panel has been implemented (worked on both ULC and Regular WinCC
 
         - FSM haven't the time
 
-\subsection{Small Iteration from 27th to the 29th}
+\subsection*{Iteration from Wednesday 27th to Tuesday 2nd}
+The aim of the iteration was to :
+    - Adding and testing the FSM, on the Web app, it actually works but...
+    - Create Shortcut for opening differents kinds of panels, I had issues with the DEN Panel...
+    - Didn't check on the Alarm Screen and the Users Permissions, as I had issues with the DNS part of the tuturials.
 
 \normalsize
 \end{document}

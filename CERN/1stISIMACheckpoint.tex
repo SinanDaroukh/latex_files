@@ -1,9 +1,110 @@
 \documentclass[a4paper, 10pt]{article}
 
 \usepackage{geometry}
+\usepackage{hyperref}
 
 \geometry{hmargin=2.5cm, lmargin=3cm, rmargin=2cm}
 
 \title{Notes and Logbook}
 \author{Sinan DAROUKH}
 \date{4th May 2019}
+
+
+\begin{document}
+
+\begin{titlepage}
+\maketitle
+\end{titlepage}
+
+\tableofcontents
+\newpage
+
+\section{Objectifs et mise en contexte du stage}
+\subsection{The CERN and the LHCb Departement}
+\subsection{What is WinCC-OA ?}
+\subsection{What is JCOP ?}
+\subsection{Main goals of the internship}
+\section{Avancements des travaux}
+\section{Logbook and tasks done}
+\footnotesize
+\subsection{Iteration from the Monday 4th of May to the Friday 15th of May}
+\paragraph{Objectives of the iteration :} 
+The main goal of this iteration was to get more familiar with WinCC-OA and the JCOP Framework. Also the main idea was to think about how to make the LHCb experiments monitor more accessible from the web without changing the WinCC-OA pre-existing project drastically.
+\paragraph{Tasks done \& notes :}
+\begin{itemize}
+    \item Reading documentations about WinCC-OA.
+    \item Setting up the main project.
+    \item Reading/Writting emails to the ISIMA supervisor (Mr HILL) and the CERN one (Mr Luis Granado Cardoso).
+    \item Helping and exchanging with Loann, who is working on the same technology as me.
+    \item Going through the tutorial slides.
+    \item Experimenting through Exercice 1,2,3 and 4.
+    \item Facing some difficulties with the CTRL system.
+    \item Reading documentation about HttpServer
+    \item Watching videos about WinCC-OA on \href{https://www.youtube.com/user/ETM2011}{Siemens} and  \href{https://www.youtube.com/channel/UCGBnHd1-B-Zg9MDsjTk0-Sw}{KAASM}'s youtube channel. 
+    \item Doing daily meetings with Luis to track the progess.
+\end{itemize}
+
+\subsection{Iteration from the Wednesday 15th of May to the Sunday 20th of May}
+\paragraph{Objectives of the iteration :}
+The aim of this iteration was to look at all the documentation about the WebServer components in WinCC-OA, how to navigate properly between panels, how to manage users access permissions and restrictions, and how to well organise configs files in a project.
+\paragraph{Tasks done \& notes :}
+\begin{itemize}
+    \item I was sick during a part of this iteration, so I did not work effictively on Monday
+    \item Reading all the documentation
+    \item 
+\end{itemize}
+
+Configs files notes : 
+config.level is for managers configurations, and basically, loading libs through this file.
+config.redu is for redundancy, that we are not seeking for, at the moment
+config.http is a premade file from the WinCC-OA folder
+config.webclient is an additional file for configuration Desktop and Mobile UI add-ons\dots Not what we are looking for
+
+I have tested multiple stuffs on those. Nothing really can simply the actual config (root) file.
+I guess there's another option not yet tested which is the own conf file, idk if we can use more than once.
+
+For the navigation fluidify and simply, I have been testing stuffs and reading about the differences between Modules, Embedded Modules , Child and Root Panel.
+To navigate properly, I think I should take a look at the Topologies panels components...
+Embedded modules through one root module, may be the best option.
+
+\subsection{Iteration from Wednesday 20th to the 27th}
+TO DO : 
+\begin{itemize}
+    \item User permissions, one can connect to view, another can connect to administrate
+    \item Play with the alarm Screen, make a shortcut to it
+    \item (FSM) Implement one, how it goes
+\end{itemize}
+DONE :  
+\begin{itemize}
+    \item Login panel has been implemented (worked on both ULC and Regular WinCC)
+    \item Can access on user admnistration panel through it : Module > SysMgm > Permissions > User Admnistration, which on root access list all users and permissions
+    \item Groups > Admnistrate > Permissions : You can change the group permissions but also, create new groups with new permissions
+    \item Permissions are logged in an Authorization Bits system. The first five bits are already define, they are predefined and un-changeable, but you can change the description if you want and texts of it : 
+    \begin{itemize}
+        \item 1 : Visualisation: Visualize only
+        \item 2 : Normal operator authorization: permits the opening of child panels.
+        \item 3 : Advanced operator authorization: permits execution of commands, explicit setting of replacement values, input of correction values as well as changes to all value range types.
+        \item 4 : Administration: permits the use of the PARA.
+        \item 5 : Acknowledgement: permits acknowledgment of alerts.
+        \item 32 : Allows SSO for one work station
+    \end{itemize}
+    \item Can also access on login statistics panel to see whose connected : Module \textgreater\  Login Statistics
+    \item We can manage the Components access thanks to the boolean getUserPermission() function : CONTROL \textgreater\  Control functions \textgreater\ G \textgreater\ getUserPermission()
+    \item We can check on the Main Panel, by Login via Guest or via Root
+    \item Auto login done, with inactivity (Glitch with inactivity, security one) (UI number changed some time)
+    \item Alarm Panel, I have worked on it, but there is a glitchy features, the windows appears behind the Alarm Screen
+    \item I also haven't the time to experiment on the FSM Things
+\end{itemize}
+
+\subsection{Iteration from Wednesday 27th to Tuesday 2nd}
+The aim of the iteration was to :
+\begin{itemize}
+    \item Adding and testing the FSM, on the Web app, it actually works but...
+    \item Create Shortcut for opening differents kinds of panels, I had issues with the DEN Panel... But now it works
+    \item Didn't check on the Alarm Screen and the Users Permissions, as I had issues with the DNS part of the tuturials.
+\end{itemize}
+
+
+\section{Real Gantt chart}
+
+\end{document}

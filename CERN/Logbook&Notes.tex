@@ -73,10 +73,12 @@ Pro-tips : Use const references, to avoid needless copying of variables in callb
 Interesting point of view of why we should not try to save space doing interface but caring about color blind people. Slide 187 : Basic DP access functions
 dpGet() - get the value of a datapoint config attribute once.
 dpConnect() - register a callback to be executed whenever a datapoint config attribut changes.
-dpSet()/dpSetWait() - set the value of a datapoint config attribute.\\
+dpSet()/dpSetWait() - set the value of a datapoint config attribute.
 
+\paragraph{}
 Check also for dpQuery(), dpDelete(), etc\dots
 
+\paragraph{}
 Slide 188 : Performance
 dpSetWait() - set around ~1000 datapoints in a single function call.
 dpGet() - request values of as many datapoints as possible (pratical) in a single function call.

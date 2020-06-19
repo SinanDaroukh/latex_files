@@ -1,9 +1,10 @@
-\documentclass[a4paper, 10pt]{article}
+\documentclass[a4paper, 12pt]{article}
 
 \usepackage{geometry}
 \usepackage{hyperref}
 \usepackage{pgfgantt}
-\usepackage{biblatex}
+\usepackage[backend=biber]{biblatex}
+\addbibresource{1stISIMACheckpoint.bib}
 
 %\usepackage[babel=true, kerning=true]{microtype}
 
@@ -160,14 +161,57 @@ The aim of the iteration was to :
     \item Didn't check on the Alarm Screen and the Users Permissions, as I had issues with the DNS part of the tuturials.
 \end{itemize}
 
+\subsection{Iteration from the Thurday 3rd June and to the Monday 8th}
+The aim of this iteration was to :
+\begin{itemize}
+    \item Look at the documentation about Distribution Manager, Distribution Configs Files, Distributions Systems etc...
+    \item Test to implement the following panel (Location : /localdisk/wincc/prod/["LBECSINFO","ECS"]/panels/) : 
+    \begin{itemize}
+        \item lbAlarmHandling/lbAlarmScreen.pnl
+        \item FarmUsagePlot.pnl
+        \item lbECS/lbOPCMonitor.pnl
+        \item lbTriggers/lbTriggersOverview.pnl
+        \item lbTrending/lbTrending.pnl
+    \end{itemize}
+    \item Use the current project as the main client, connected to the ECS and LBECSINFO projects.
+\end{itemize}
+\begin{center}
+    \includegraphics[scale = 0.5]{images/subsystem.png}
+\end{center}
+I have read a lot of the documentation about the distributed managements, and distributed systems.  I have learnt that you can configure them through an existing wizard only if you create a new project. Else you should do it via the configuration files. The Test Project configuration file should look like this :\newline
+[general]\newline
+distributed = 1\newline
+[dist]\newline
+distPeer = "dist\_name\_ECS" 1130\newline
+distPeer = "dist\_name\_LBECSINFO" 1140\newline
+
+I have tried to launch script from the copied project, but without any success....
+
+\subsection{Iteration from the Monday 8th to the Wednesday 10th}
+The meeting with Luis helped me debugging the and connecting the two distributed projects. I am currently trying to launch differents panels from the ULC web components.
+I have succeed to open them, but... the data point seems to not be well-connected or at least are connected to the wrong project.
+I achieved this by updating the config files, which is I think not the cleanest way to do it, but the fastest (Testing first)
+We can explore two options which are : copying all the project in a special repos, or we can try with the addSymbol() functions, or we can also try to copy all the paths.
+
+\subsection{Iteration from the Friday 12th June to the Friday 19th June}
+
+\subsection{Iteration from the Friday 19th June to the Wednesday 24th June}
+The aim of this iteration is : 
+\begin{itemize}
+    \item 
+\end{itemize}
+
 \newpage
 \section{Real Gantt chart}
 
 \section{Bibliographie}
-J'insère le premier \cite{ref}, le second \cite{ref2}, le troisième \cite{ref3}, le quatrième \cite{ref4}, le cinquième \cite{ref5} et le sixième \cite{ref6}.
 
-\bibliographystyle{} % Le style est mis entre accolades.
-\bibliography{1stISIMACheckpoint} % mon fichier de base de données s'appelle bibli.bib
+
+%J'insère le premier \cite{ref}, le second \cite{ref2}, le troisième \cite{ref3}, le quatrième \cite{ref4}, le cinquième \cite{ref5} et le sixième \cite{ref6}.
+\nocite{*}
+\printbibliography
+%\bibliographystyle{plain} % Le style est mis entre accolades.
+%\bibliography{1stISIMACheckpoint} % mon fichier de base de données s'appelle bibli.bib
 
 \section{Webographie}
-\end{document} 
+\end{document}

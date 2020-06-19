@@ -5,3 +5,7 @@
 */*.fdb_latexmk
 */*.aux
 */*.toc
+*/*.bbl
+*/*.bcf
+*/*.blg
+*/*.run.xml

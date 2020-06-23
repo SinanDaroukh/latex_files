@@ -3,26 +3,57 @@
 \usepackage{geometry}
 \usepackage{hyperref}
 \usepackage{pgfgantt}
-\usepackage[backend=biber]{biblatex}
+\usepackage[utf8]{inputenc}
+% Bibliography packages and ressources
+\usepackage[backend=biber,style=alphabetic]{biblatex}
 \addbibresource{1stISIMACheckpoint.bib}
-
-%\usepackage[babel=true, kerning=true]{microtype}
+% Appendix packages and figures managments
+\usepackage{chngcntr} 
+\usepackage{appendix}
+% Glossary packages
+\usepackage[acronym,toc]{glossaries}
 
 \geometry{hmargin=2.5cm, lmargin=3cm, rmargin=2cm}
+\pagestyle{headings}
 
 \title{Notes and Logbook}
 \author{Sinan DAROUKH}
 \date{4th May 2019}
 
+% =========================================
+%               Glossary entries
+% =========================================
+\makeglossaries
+
+\newglossaryentry{latex}{name={latex},description={Is a mark up language specially suited for scientific documents}}
+\newglossaryentry{maths}{name={mathematics},description={Mathematics is what mathematicians do}}
+
+\newacronym{gcd}{GCD}{Greatest Common Divisor}
+
+% =========================================
+
 \begin{document}
 
+
+% =========================================
+%               Title Page
+% =========================================
 \begin{titlepage}
 \maketitle
 \end{titlepage}
+% =========================================
 
+
+\renewcommand{\contentsname}{Table of contents}
 \tableofcontents
 \newpage
+\renewcommand{\listfigurename}{Table of figures and illustrations}
+\listoffigures
+\newpage
 
+
+
+\newpage
 \section{Internship context}
 \subsection{The CERN}
 \paragraph{}
@@ -82,10 +113,67 @@ While WinCC-OA offers most of the needed features to implement a large control s
 For this reason, the JCOP project was complemented by the integration of SMI++; a toolkit for sequencing and automating large distributed control systems, whose methodology combines three concepts: object orientation, Finite State Machines (FSM) and rule-based reasoning.
 
 \subsection{HTTP Server - Addons}
-\subsection{ULC UX - Addons}
+The HTTP Server integrates Internet technologies directly into WinCC OA. Implemented as an add-on for the Control Manager, possible applications are many and diverse. 
+The HTTP Server can be used as a web server for static HTML pages including download facility or to generate dynamic HTML pages. 
+This allows you to make data from WinCC OA available to many users at the same time. The complete WinCC OA programming language Control is thus available for server-side scripting tasks.
+\paragraph{Advantages of the HTTP Server :}
+\begin{itemize}
+    \item Provide custom HTML pages incorporating data from WinCC OA for intranet / Internet.
+    \item WEB alert screen with acknowledge function and free choice of filters.
+    \item Diagnostics page displaying hard disk capacity, RAM, processor usage, alert \\throughput, users logged in and more.
+    \item "HTML references" allow you to replace \$parameters at runtime without any special knowledge of HTML, that is, you can query any data points through the Internet.
+    \item Querying WinCC OA data using SQL
+    \item Transfer static HTML pages
+    \item File transfer (HTTP download).
+    \item HTTP Server uses WinCC OA specific tags in HTML.
+\end{itemize}
 
-\section{Logbook and tasks done}
-\subsection{Iteration from the Monday 4th of May to the Friday 15th of May}
+\subsection{ULC UX - Addons}
+The ULC UX is a User Interface client for WinCC OA based on the VNC technology and HTML5 technology. 
+It is used as a new alternative to the WinCC OA UI (native UI on Windows and Linux) and the WinCC OA Web Client (Plug-in-based web solution).
+The ULC UX can use already engineered panels without any special adaptions, and it provides a very high compatibility to the native UI functionality
+
+\paragraph{Benefits :}
+The ULC UX combines following benefits in a single UI solution:
+\begin{itemize}
+    \item No installation is required on client side
+    \item Communication is secured by using SSL encryption
+    \item User management can be performed by using SSO
+    \item Usage of WinCC OA panels without changes to the existing control scripts
+\end{itemize}
+\paragraph{Performance Requirements : }
+There are parameters which have an influence on the performance of the ULC UX in the web browser.
+\begin{itemize}
+    \item Bandwidth
+    \item Latency
+    \item Dynamic panel content
+    \item CPU performance of the web server
+    \item Available memory on the web server
+\end{itemize}
+Because the performance and the possible ULC UX connection to one web server are highly addicted to the panel and the scripting inside the panel we cannot guaranty any fixed number of possible connections. 
+This will be highly customer panel dependent and the customer will need to test his own panels to get a possible ULC UX connection. If the performance of one web server is not sufficient load balancing can be used with multiple web servers.
+\paragraph{Architecture}
+The basic architecture displayed in the figure below gives an overview for the involved WinCC OA managers or software modules for the WinCC OA ULC UX.
+\begin{figure}[!h]
+    \centering
+    \includegraphics[scale = 0.4]{images/ulc_ux_architecture.png}
+    \caption{ULC UX Architecture}
+\end{figure}\newline
+When a browser tries to connect to the ULC UX - URL of the WinCC OA HTTP Server, the HTTP server returns the ULC UX web page and automatically starts a local WinCC OA UI manager. This server side UI manger transfers displayed information of the UI into HTML 5 interpretable data chunks.. A Java Script library at Client side afterwards interprets those data chunks and draws the graphics in the browser.
+
+\clearpage
+\glsaddall
+\printglossaries
+
+% =========================================
+%               Appendices
+% =========================================
+\counterwithin{figure}{section} % Figures counters reinitialised
+\newpage
+\appendixpage
+\begin{appendix}
+\section{Logbook}
+\subsection{Iteration from Monday 4th May to Friday 15th May}
 \paragraph{Objectives of the iteration :} 
 The main goal of this iteration was to get more familiar with WinCC-OA and the JCOP Framework. 
 Also the main idea was to think about how to make the LHCb experiments monitor more accessible from the web without changing the WinCC-OA pre-existing project drastically.
@@ -103,7 +191,7 @@ Also the main idea was to think about how to make the LHCb experiments monitor m
     \item Doing daily meetings with Luis to track the progess.
 \end{itemize}
 
-\subsection{Iteration from the Wednesday 15th of May to the Sunday 20th of May}
+\subsection{Iteration from Wednesday 15th May to Sunday 20th May}
 \paragraph{Objectives of the iteration :}
 The aim of this iteration was to look at all the documentation about the WebServer components in WinCC-OA, how to navigate properly between panels, how to manage users access permissions and restrictions, and how to well organise configs files in a project. I was sick during a part of this iteration, so I did not work effictively on Monday
 \paragraph{Task done :}
@@ -124,7 +212,7 @@ I guess there's another option not yet tested which is the own configuration fil
 For the navigation fluidify and simplification issues, I have been testing stuffs and reading about the differences between Modules, Embedded Modules , Child and Root Panel.\newline
 To navigate properly, I think I should take a look at the Topologies panels components... The embedded modules through one root module, may be the best layout option.
 
-\subsection{Iteration from the Wednesday 20th May to the Wednesday 27th May}
+\subsection{Iteration from Wednesday 20th May to Wednesday 27th May}
 \paragraph{Objectives of the iteration :}
 \begin{itemize}
     \item User permissions, one can connect to view, another can connect to administrate
@@ -153,19 +241,19 @@ To navigate properly, I think I should take a look at the Topologies panels comp
     \item I also haven't the time to experiment on the FSM.
 \end{itemize}
 
-\subsection{Iteration from the Wednesday 27th May to the Tuesday 2nd June}
-The aim of the iteration was to :
+\subsection{Iteration from Wednesday 27th May to Tuesday 2nd June}
+\paragraph{Objectives of the iteration :}
 \begin{itemize}
     \item Adding and testing the FSM, on the Web app, it actually works but... it took me a lot of times.
     \item Create Shortcut for opening differents kinds of panels, I had issues with the DEN Panel... But now it works
     \item Didn't check on the Alarm Screen and the Users Permissions, as I had issues with the DNS part of the tuturials.
 \end{itemize}
 
-\subsection{Iteration from the Thurday 3rd June and to the Monday 8th}
-The aim of this iteration was to :
+\subsection{Iteration from Thurday 3rd June to to Monday 8th June}
+\paragraph{Objectives of the iteration :}
 \begin{itemize}
     \item Look at the documentation about Distribution Manager, Distribution Configs Files, Distributions Systems etc...
-    \item Test to implement the following panel (Location : /localdisk/wincc/prod/["LBECSINFO","ECS"]/panels/) : 
+    \item Test to implement the following panel : \\ (Location : /localdisk/wincc/prod/["LBECSINFO","ECS"]/panels/)
     \begin{itemize}
         \item lbAlarmHandling/lbAlarmScreen.pnl
         \item FarmUsagePlot.pnl
@@ -175,43 +263,53 @@ The aim of this iteration was to :
     \end{itemize}
     \item Use the current project as the main client, connected to the ECS and LBECSINFO projects.
 \end{itemize}
-\begin{center}
-    \includegraphics[scale = 0.5]{images/subsystem.png}
-\end{center}
-I have read a lot of the documentation about the distributed managements, and distributed systems.  I have learnt that you can configure them through an existing wizard only if you create a new project. Else you should do it via the configuration files. The Test Project configuration file should look like this :\newline
+I have read a lot of the documentation about the distributed managements, and distributed systems.
+I have learnt that you can configure them through an existing wizard only if you create a new project.
+Else you should do it via the configuration files. I have tried to launch script from the copied project, but without any success. \newline
+The Test Project configuration file should look like this :\newline
 [general]\newline
 distributed = 1\newline
 [dist]\newline
 distPeer = "dist\_name\_ECS" 1130\newline
-distPeer = "dist\_name\_LBECSINFO" 1140\newline
+distPeer = "dist\_name\_LBECSINFO" 1140
 
-I have tried to launch script from the copied project, but without any success....
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale = 0.5]{images/subsystem.png}
+    \caption{Example of distributed projetcs}
+\end{figure}
 
-\subsection{Iteration from the Monday 8th to the Wednesday 10th}
+\subsection{Iteration from Monday 8th June to Wednesday 10th June}
+\paragraph{Objectives of the iteration :}
 The meeting with Luis helped me debugging the and connecting the two distributed projects. I am currently trying to launch differents panels from the ULC web components.
 I have succeed to open them, but... the data point seems to not be well-connected or at least are connected to the wrong project.
 I achieved this by updating the config files, which is I think not the cleanest way to do it, but the fastest (Testing first)
 We can explore two options which are : copying all the project in a special repos, or we can try with the addSymbol() functions, or we can also try to copy all the paths.
 
-\subsection{Iteration from the Friday 12th June to the Friday 19th June}
-
-\subsection{Iteration from the Friday 19th June to the Wednesday 24th June}
-The aim of this iteration is : 
+\subsection{Iteration from Friday 12th June to Friday 19th June}
+\subsection{Iteration from Friday 19th June to Wednesday 24th June}
+\paragraph{Objectives of this iteration :}
 \begin{itemize}
-    \item 
+    \item Create a new main page for the app, which should be more similar than the one already in use.
+    \item Create shortcuts to the following panels :
+    \begin{itemize}
+        \item LHCb Top FSM - Without the possibility to click anywhere
+        \item LHCb - LHC - Big Brother
+        \item Alarms Screen
+        \item Trending panels
+    \end{itemize}
+    \item Also check if we can have to access to other stuffs than WinCC-OA panels onto the ULC UX components.
 \end{itemize}
 
 \newpage
 \section{Real Gantt chart}
+\end{appendix}
 
-\section{Bibliographie}
-
-
-%J'insère le premier \cite{ref}, le second \cite{ref2}, le troisième \cite{ref3}, le quatrième \cite{ref4}, le cinquième \cite{ref5} et le sixième \cite{ref6}.
+\newpage
+\section{References}
 \nocite{*}
-\printbibliography
-%\bibliographystyle{plain} % Le style est mis entre accolades.
-%\bibliography{1stISIMACheckpoint} % mon fichier de base de données s'appelle bibli.bib
+\printbibliography[heading=subbibintoc,type=article,title={Bibliography}]
+\printbibliography[heading=subbibintoc,type=misc,title={Webography}]
 
-\section{Webographie}
+
 \end{document}

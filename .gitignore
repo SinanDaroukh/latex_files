@@ -9,3 +9,11 @@
 */*.bcf
 */*.blg
 */*.run.xml
+*/*.acn
+*/*.acr
+*/*.alg
+*/*.glg
+*/*.glo
+*/*.gls
+*/*.ist
+*/*.lof

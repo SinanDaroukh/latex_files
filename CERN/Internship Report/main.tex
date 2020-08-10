@@ -1,0 +1,103 @@
+\documentclass[a4paper, 12pt]{report}
+
+\usepackage{geometry}
+\usepackage[figuresleft]{rotating}
+\usepackage{hyperref}
+\usepackage{pgfgantt}
+\usepackage{textcomp}
+\usepackage[utf8]{inputenc}
+% Bibliography packages and resources
+\usepackage[backend=biber,style=alphabetic]{biblatex}
+\addbibresource{main.bib}
+% Appendix packages and figures managements
+\usepackage{chngcntr} 
+\usepackage{appendix}
+% Glossary packages
+\usepackage[acronym,toc]{glossaries}
+
+\usepackage{subfiles} % Best loaded last in the preamble
+
+\geometry{hmargin=2.5cm, lmargin=3cm, rmargin=2cm}
+\pagestyle{headings}
+
+\title{Notes and Logbook}
+\author{Sinan DAROUKH}
+\date{\today}
+
+% =========================================
+%               Glossary entries
+% =========================================
+\makeglossaries
+
+\newglossaryentry{latex}{name={latex},description={Is a mark up language specially suited for scientific documents}}
+\newglossaryentry{maths}{name={mathematics},description={Mathematics is what mathematicians do}}
+
+\newacronym{gcd}{GCD}{Greatest Common Divisor}
+
+% =========================================
+
+\begin{document}
+
+
+% =========================================
+%               Title Page
+% =========================================
+\begin{titlepage}
+
+
+
+
+
+\end{titlepage}
+% =========================================
+
+
+\renewcommand{\contentsname}{Table of contents}
+\tableofcontents
+\newpage
+\renewcommand{\listfigurename}{Table of figures and illustrations}
+\listoffigures
+\newpage
+
+
+\chapter*{Acknowledgments}
+\addcontentsline{toc}{chapter}{Acknowledgements}
+
+\chapter*{Introduction}
+\addcontentsline{toc}{chapter}{Introduction}
+\subfile{parts/introduction}
+
+\part{Context Introduction}
+\subfile{parts/part1}
+
+\part{WinCC-OA}
+\subfile{parts/part2}
+
+\part{Results and Discussions}
+\subfile{parts/part3}
+
+\chapter*{Conclusion}
+\addcontentsline{toc}{chapter}{Conclusion}
+\subfile{parts/conclusion}
+
+\chapter*{Abstract}
+\addcontentsline{toc}{chapter}{Abstract}
+\subfile{parts/abstract}
+
+\chapter*{Résumé Étendu}
+\addcontentsline{toc}{chapter}{Résumé Étendu}
+\subfile{parts/resume}
+
+\chapter*{References}
+\addcontentsline{toc}{chapter}{References}
+\nocite{*}
+\printbibliography[heading=subbibintoc,type=article,title={Bibliography}]
+\printbibliography[heading=subbibintoc,type=misc,title={Webography}]
+
+%\glsaddall
+%\printglossaries
+
+%\addcontentsline{toc}{chapter}{Appendices}
+%\subfile{parts/appendices}
+
+\end{document}

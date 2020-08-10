@@ -1,0 +1,88 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\chapter{WinCC-OA}
+
+\section{WinCC-OA}
+\paragraph{}
+SIMATIC WinCC is a Supervisory Control And Data Acquisition (a.k.a. SCADA) and human-machine interface from Siemens.
+SCADA systems are used to monitor and control physical processes involved in industry and infrastructure on a large scale and over long distances. SIMATIC WinCC can be used in combination with Siemens controllers.
+You may have heard about PVSS, it was a SCADA system, made by ETM. 
+Siemens now owns ETM and rebranded PVSS as WinCC-OA, but it's still the same tool. 
+\par \noindent \newline
+WinCC is written for the Microsoft Windows operating system, but it could be use on Linux operating system. 
+WinCC-OA aims are mainly to control and acquire data from the sensors from reals controls on experiments.
+It's a tool for building SCADA applications. WinCC-OA is the SCADA system chosen by JCOP (CERN).
+At the CERN, WinCC is used by LHC Experiments (ATLAS, CMS, ALICE, LHCb), but also surprisly also CERN’s Electrical Network and CERN’s Cooling and Ventilation. Around the world, there is around 800 developers actives on the WinCC framework.
+\par \noindent \newline
+WinCC OA has provides features for device description (through data points, and data point elements), but also alarm handling with generation, masking and alarm display, filtering, summarising, archiving, trending.
+It comes also with an user interface builder and access control managment.
+
+\subsection{WinCC Architecture}
+WinCC is composed of various process called Managers. The sum of all managers from a System.
+Managers are scalable, indeed, only the required managers are started and managers can spread across several machines. Managers bring modularity, as all of them work as an autonomous functional unit. They bring also flexibility as the computer forming a system can run different operatings systems.
+A typical WinCC application is composed of the following managers :
+
+\begin{itemize}
+    \item The Event Manager (EV)
+    \item The Data Base Manager (DM)
+    \item User Interface Managers (UIM)
+    \item Ctrl Managers (Ctrl)
+    \item API Managers (API)
+    \item Drivers (D)
+\end{itemize}
+
+\paragraph{Event Manager}
+There is only one Event Manager per WinCC-OA system. His duty is to receive and evaluate messages (events) from others managers and act accordingly by distributions events to others managers.
+It also administrate users authorization.
+
+\paragraph{Database Manager}
+This manager is in charge of the managment of a database that reflects the actual project status. For example, it processes the archiving of most recently known values or alarms. It also administers the system parameterization.
+WinCC raw installations comes with a RAIMA database, but actually it supports link to an Oracle database, which is actually used in my case.
+
+\paragraph{User Interface Manager}
+During the run-time of the project, it shows the panel in the control room, forwards user input to the event manager, take care of the user logon/logoff. It executes also the scripts behind each widgets of the panel.
+During the development time, it takes care of the GEDI which is the Graphical EDItor of WinCC-OA and allows developers to create panels. The development is easier thanks to widgets and drag and drop features.
+
+\paragraph{CTRL Manager}
+The job of this manager is to execute scripts not needing a screen or a keyboard, it interprates the content of programs written in CTRL++ which is a mix between C and C++. It supports concurrency, but not real parallelism.
+
+\paragraph{API Manager}
+It allows users to write their own programs in C++ using a WinCC API to access the data in the database.
+
+\paragraph{Driver Managers}
+ It provides the interface to the devices to be controlled. These can be WinCC provided drivers like Profibus, OPC, etc. or user-made drivers.
+ 
+\paragraph{Distributed projects}
+
+\section{JCOP Framework}
+\paragraph{}
+JCOP stands for Joint COntrols Project which is a collaboration between the LHC experiments, the PH Departement and EN-ICE, the Controls Group in the Engineering Departement. 
+JCOP aims to reduce the overall manpower cost required to produce and run the experiment control systems.
+The JCOP Framework provides all the components required for WinCC-OA tool. 
+Basically, it's a layer of software components and shared tools that might be useful for modelling LHC Experiment.
+\par \noindent \newline
+Around the end of 1997, a common project, the Joint Controls Project (JCOP), was setup between the four LHC experiments and a Controls group at CERN, to define a common architecture and a framework to be used by the experiments in order to build their Detector Control Systems (DCS).
+The JCOP Framework adopted a hierarchical and highly distributed architecture providing for the integration of the various components in a coherent and uniform manner. 
+The Framework was implemented based on a SCADA (Supervisory Control And Data Acquisition) system called WinCC-OA (formerly PVSSII).
+\par \noindent \newline
+While WinCC-OA offers most of the needed features to implement a large control system, it was felt that a tool for implementing higher-level logical behavior was missing.
+For this reason, the JCOP project was complemented by the integration of SMI++; a toolkit for sequencing and automating large distributed control systems, whose methodology combines three concepts: object orientation, Finite State Machines (FSM) and rule-based reasoning.
+
+\section{GEDI Module}
+\subsection{Module, Child, Panels}
+
+\section{PARA Module}
+\subsection{Datapoints}
+\subsection{Datapoints Elements}
+\subsection{Datapoints Type}
+
+\section{CTRL ++}
+
+\chapter{HTTP Server and Ultra Light Web Component}
+\section{HTTP Server}
+\section{ULC UX}
+
+
+\end{document}
